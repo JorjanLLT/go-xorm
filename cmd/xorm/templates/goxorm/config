@@ -1,0 +1,5 @@
+lang=go
+genJson=1
+prefix=t_
+timepkg=scs/models/custtype
+filesuffix=_autogen
