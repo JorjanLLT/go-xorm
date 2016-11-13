@@ -28,6 +28,6 @@ go get github.com/go-xorm/cmd/xorm
 
 ```bash
 打开terminal
-go build -o xorm
-./xorm reverse postgres "postgres://testuser:testuser123@10.200.63.120:5432/testdb?sslmode=disable" templates/goxorm packagename
+xorm reverse postgres "postgres://testuser:testuser123@10.200.63.120:5432/testdb?sslmode=disable" templates/goxorm packagename
+(运行之前确认 go get github.com/skyrunner2012/go-xorm/cmd/xorm 并且$GOBIN已经配置到了PATH中)
 ```
