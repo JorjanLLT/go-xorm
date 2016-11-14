@@ -323,7 +323,9 @@ func humpToLine(s string) string {
     var buf bytes.Buffer
     for i, l := 0, len(s); i < l; i++ {
         if s[i]>='A' && s[i]<='Z' {
-            buf.WriteByte(byte('_'))
+        	if i !=0 {
+                buf.WriteByte(byte('_'))
+        	}
             buf.WriteByte(s[i]-'A'+'a')
         } else {
             buf.WriteByte(s[i])
