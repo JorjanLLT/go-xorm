@@ -278,7 +278,7 @@ func runReverse(cmd *Command, args []string) {
 				tbs := []*core.Table{table}
 				imports := langTmpl.GenImports(tbs)
 
-				w, err := os.Create(path.Join(genDir, unTitle(mapper.Table2Obj(table.Name))+fileSuffix+ext))
+				w, err := os.Create(path.Join(genDir, unTitle(humpToLine(mapper.Table2Obj(table.Name)))+fileSuffix+ext))
 				if err != nil {
 					log.Errorf("%v", err)
 					return err
@@ -317,4 +317,17 @@ func runReverse(cmd *Command, args []string) {
 		return nil
 	})
 
+}
+
+func humpToLine(s string) string {
+    var buf bytes.Buffer
+    for i, l := 0, len(s); i < l; i++ {
+        if s[i]>='A' && s[i]<='Z' {
+            buf.WriteByte(byte('_'))
+            buf.WriteByte(s[i]-'A'+'a')
+        } else {
+            buf.WriteByte(s[i])
+        }
+    }
+    return buf.String()
 }
