@@ -1,5 +1,5 @@
 lang=go
 genJson=1
 prefix=t_
-timepkg=github.com/skyrunner2012/xormplus/xorm
+timepkg=scs/common/custtype
 filesuffix=_autogen
