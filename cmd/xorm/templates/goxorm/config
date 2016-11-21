@@ -2,5 +2,5 @@ lang=go
 genJson=1
 prefix=t_
 timepkg=scs/common/custtype
-filesuffix=_autogen
+filesuffix=__autogen
 doObjSuffix=Do
