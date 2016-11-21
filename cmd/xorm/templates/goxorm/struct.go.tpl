@@ -9,8 +9,10 @@ import (
 )
 {{end}}
 
+{{$doObjSuffix:=.DoObjSuffix}}
+
 {{range .Tables}}
-type {{Mapper .Name}} struct {
+type {{Mapper .Name}}{{$doObjSuffix}} struct {
 {{$table := .}}
 {{range .ColumnsSeq}}{{$col := $table.GetColumn .}}	{{Mapper $col.Name}}	{{Type $col}} {{Tag $table $col}}
 {{end}}

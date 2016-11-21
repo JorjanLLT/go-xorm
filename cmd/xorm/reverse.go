@@ -40,6 +40,7 @@ according database's tables and columns to generate codes for Go, C++ and etc.
 var timePkg="time"
 var timePkgName="time"
 var fileSuffix="_autogen"
+var doObjSuffix="Do"
 
 func init() {
 	CmdReverse.Run = runReverse
@@ -60,6 +61,7 @@ type Tmpl struct {
 	Tables  []*core.Table
 	Imports map[string]string
 	Model   string
+    DoObjSuffix string
 }
 
 func dirExists(dir string) bool {
@@ -162,6 +164,9 @@ func runReverse(cmd *Command, args []string) {
         }
         if j, ok := configs["filesuffix"]; ok {
             fileSuffix = j
+        }
+        if j, ok := configs["doobjsuffix"]; ok {
+            doObjSuffix = j
         }
 	}
 
@@ -286,7 +291,7 @@ func runReverse(cmd *Command, args []string) {
 
 				newbytes := bytes.NewBufferString("")
 
-				t := &Tmpl{Tables: tbs, Imports: imports, Model: model}
+				t := &Tmpl{Tables: tbs, Imports: imports, Model: model, DoObjSuffix: doObjSuffix}
 				err = tmpl.Execute(newbytes, t)
 				if err != nil {
 					log.Errorf("%v", err)
